@@ -48,7 +48,7 @@ class Graph {
             std::vector<int> previousVertex(numVertices, numVertices);
             distance[startVertex] = 0;
 
-            // PQ receives pair<float, int> and inserts in an ordered vector relying on greater<pair<float, int>>
+            // Store pair of weight, numVertex with smallest weight on top
             std::priority_queue<std::pair<float, int>, std::vector<std::pair<float, int>>, std::greater<std::pair<float, int>>> pq;
             pq.push({0, startVertex});
                     
@@ -111,7 +111,50 @@ class Graph {
             return {distance, path};
         }
 
-        std::vector<Edge> minimumSpanningTree() {}
+        std::vector<Edge> minimumSpanningTree() {
+            // Vector to store tree
+            std::vector<Edge> minimumTree;
+            // Vector to store visited vertices
+            std::vector<bool> checked(numVertices, false);
+            // Store smallest edge value on top
+            std::priority_queue<Edge, std::vector<Edge>, std::greater<Edge>> pq;
+
+            // Starting from Vertex 0
+            // Insert its edges on queue
+            checked[0] = true;
+            for (auto& edge : adjacencyList[0]) {
+                pq.push(edge);
+            }
+
+            while (!pq.empty()) {
+                // Always the smallest edge on top
+                Edge currentEdge = pq.top();
+                // Remove edge from queue
+                pq.pop();
+
+                // Get its vertices
+                int vertexA = currentEdge.getVertexA();
+                int vertexB = currentEdge.getVertexB();
+
+                // Store the vertex that hasn't been visited yet
+                // If both vertices have been visited, do nothing
+                if (checked[vertexA] && !checked[vertexB]) {
+                    minimumTree.push_back(currentEdge);
+                    checked[vertexB] = true;
+                    for (const auto& edge : adjacencyList[vertexB]) {
+                        pq.push(edge);
+                    }
+                }
+                else if (!checked[vertexA] && checked[vertexB]) {
+                    minimumTree.push_back(currentEdge);
+                    checked[vertexA] = true;
+                    for (const auto& edge : adjacencyList[vertexA]) {
+                        pq.push(edge);
+                    }
+                }
+            }
+            return minimumTree;
+        }
 
         void printGraph() {
             std::cout << "Num of Vertices: " << numVertices << std::endl;
