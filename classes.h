@@ -39,18 +39,18 @@ class Graph {
             adjacencyList[vertexB].push_back(edge);
         }
 
-        std::pair<std::vector<float>, std::vector<int>> dijkstraShortestPath(int sourceVertex) {
+        std::pair<std::vector<float>, std::vector<int>> dijkstraShortestPath(int startVertex) {
             // Vector of Distances with numVertices size and inf value on each position
             // inf value means no info on the actual distances yet
             std::vector<float> distance(numVertices, std::numeric_limits<float>::infinity());
 
             // Vector to store previous Vertex on the shortest path to each Vertex
             std::vector<int> previousVertex(numVertices, numVertices);
-            distance[sourceVertex] = 0;
+            distance[startVertex] = 0;
 
             // PQ receives pair<float, int> and inserts in an ordered vector relying on greater<pair<float, int>>
             std::priority_queue<std::pair<float, int>, std::vector<std::pair<float, int>>, std::greater<std::pair<float, int>>> pq;
-            pq.push({0, sourceVertex});
+            pq.push({0, startVertex});
                     
             while (!pq.empty()) {
                 // Info of vertex on top of PQ
@@ -102,6 +102,16 @@ class Graph {
 
             return path;
         }
+
+        std::pair<float, std::vector<int>> pathVertex2Vertex(int startVertex, int endVertex) {
+            std::pair<std::vector<float>, std::vector<int>> startVertexInfo = dijkstraShortestPath(startVertex);
+            float distance = startVertexInfo.first[endVertex];
+            std::vector<int> path = getPath(startVertex, endVertex, startVertexInfo.first, startVertexInfo.second);
+            
+            return {distance, path};
+        }
+
+        std::vector<Edge> minimumSpanningTree() {}
 
         void printGraph() {
             std::cout << "Num of Vertices: " << numVertices << std::endl;
