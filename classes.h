@@ -156,6 +156,13 @@ class Graph {
             return minimumTree;
         }
 
+        float getMinimumSpanningTreeWeight(std::vector<Edge> minimumTree) {
+            float weight = 0.0;
+            for (auto& edge: minimumTree)
+                weight += edge.getWeight();
+            return weight;
+        }
+
         float getEccentricity(int startVertex) {
             // Find all distances then return max distance
             std::vector<float> distances = dijkstraShortestPath(startVertex).first;
