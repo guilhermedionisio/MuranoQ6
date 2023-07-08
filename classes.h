@@ -137,7 +137,7 @@ class Graph {
                 int vertexB = currentEdge.getVertexB();
 
                 // Store the vertex that hasn't been visited yet
-                // If both vertices have been visited, do nothing
+                // If both vertices have been visited, do nothing (Cycles not created)
                 if (checked[vertexA] && !checked[vertexB]) {
                     minimumTree.push_back(currentEdge);
                     checked[vertexB] = true;
@@ -154,6 +154,15 @@ class Graph {
                 }
             }
             return minimumTree;
+        }
+
+        float getEccentricity(int startVertex) {
+            // Find all distances then return max distance
+            std::vector<float> distances = dijkstraShortestPath(startVertex).first;
+            auto maxIt = std::max_element(distances.begin(), distances.end());
+            if (maxIt != distances.end())
+                return *maxIt;
+            return std::numeric_limits<float>::lowest();
         }
 
         void printGraph() {
