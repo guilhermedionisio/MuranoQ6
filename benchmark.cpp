@@ -8,8 +8,10 @@ int main() {
     std::vector<long> durations = {0, 0, 0, 0, 0};
     int startVertex = 1;
     
-    std::ofstream shortestPathTimeFile("shortestPathTime.csv", std::ios::app);
-    std::ofstream shortestPathStatsFile("shortestPathStats.txt");
+    // Write Execution Time to csv
+    // Write Distance and Path to txt
+    std::ofstream shortestPathTimeFile("timeResults/shortestPathTime.csv", std::ios::app);
+    std::ofstream shortestPathStatsFile("statsResults/shortestPathStats.txt");
     shortestPathTimeFile << "File," << "10," << "20," << "30," << "40," << "50" << std::endl;
     for (unsigned int pathIdx = 0; pathIdx < paths.size(); pathIdx++) {
         Graph graph = createGraphFromFile(paths[pathIdx]);
@@ -35,8 +37,10 @@ int main() {
 
     std::cout << "---------------------------------------------" << std::endl;
 
-    std::ofstream minimumSpanningTreeFile("minimumSpanningTreeTime.csv");
-    std::ofstream shortestMinimumTreeStatsFile("shortestMinimumTreeStats.txt");
+    // Write Execution Time to csv
+    // Write Weight and Size of Tree to txt
+    std::ofstream minimumSpanningTreeFile("timeResults/minimumSpanningTreeTime.csv");
+    std::ofstream shortestMinimumTreeStatsFile("statsResults/shortestMinimumTreeStats.txt");
     minimumSpanningTreeFile << "Graph 1," << "Graph 2," << "Graph 3" << std::endl;
     for (unsigned int pathIdx = 0; pathIdx < paths.size(); pathIdx++) {
         Graph graph = createGraphFromFile(paths[pathIdx]);
@@ -62,8 +66,10 @@ int main() {
 
     std::cout << "---------------------------------------------" << std::endl;
 
-    std::ofstream eccentricityTimeFile("eccentricityTime.csv", std::ios::app);
-    std::ofstream eccentricityStatsFile("eccentricityStats.txt");
+    // Write Execution Time to csv
+    // Write Eccentricity to txt
+    std::ofstream eccentricityTimeFile("timeResults/eccentricityTime.csv", std::ios::app);
+    std::ofstream eccentricityStatsFile("statsResults/eccentricityStats.txt");
     eccentricityTimeFile << "File," << "10," << "20," << "30," << "40," << "50" << std::endl;
     for (unsigned int pathIdx = 0; pathIdx < paths.size(); pathIdx++) {
         Graph graph = createGraphFromFile(paths[pathIdx]);
