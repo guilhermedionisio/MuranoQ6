@@ -1,5 +1,4 @@
 
-
 File: Grafos/grafo_W_1.txt
 
 End Vertex:10
@@ -32,7 +31,6 @@ End Vertex:50
 Distance: 1.31
 Shortest Path: 1 -> 762 -> 631 -> 452 -> 424 -> 577 -> 376 -> 303 -> 198 -> 50
 
-
 File: Grafos/grafo_W_2.txt
 
 End Vertex:10
@@ -64,7 +62,6 @@ End Vertex:50
 
 Distance: 2.29
 Shortest Path: 1 -> 7166 -> 5918 -> 3131 -> 5128 -> 6147 -> 5216 -> 2219 -> 5429 -> 6780 -> 6551 -> 185 -> 50
-
 
 File: Grafos/grafo_W_3.txt
 

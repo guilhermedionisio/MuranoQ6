@@ -21,4 +21,4 @@ clean:
 	rm -f $(OBJ) $(TARGET)
 
 clean-results:
-	rm *.csv
+	rm *.csv *.txt
