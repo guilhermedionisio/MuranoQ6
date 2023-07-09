@@ -1,0 +1,12 @@
+
+File: Grafos/grafo_W_1.txt
+Weight: 219.74
+Number of Vertices on the Tree: 1000
+
+File: Grafos/grafo_W_2.txt
+Weight: 2181.33
+Number of Vertices on the Tree: 10000
+
+File: Grafos/grafo_W_3.txt
+Weight: 22104.6
+Number of Vertices on the Tree: 100000
