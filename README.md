@@ -1,6 +1,5 @@
 # Desafio Murano - Questão 6 - Grafos
 
-
 Este é um projeto em C++ capaz de representar e manipular grafos não-direcionados com pesos em suas arestas. São esperadas entradas, com a descrição do grafo, no seguinte formato:
 
 - **Linha 1**: Quantidade de Vértices
@@ -38,31 +37,27 @@ São gerados alguns arquivos após o teste de alguns vértices de cada grafo:
 - `shortestPathStats.txt`: Armazena a distância e caminho mínimo do vértice 1 para alguns vértices.
 - `shortestPathTime.csv`: Armazena o tempo, em milisegundos, levado para encontrar a distância e caminho mínimo para os vértices.
 
-<div class="text-center">
 | Graph| Vertex 10 | Vertex 20 | Vertex 30 | Vertex 40 | Vertex 50 |
 |------|-----------|-----------|-----------|-----------|-----------|
 | 1    | 13        | 10        | 11        | 8         | 8         |
 | 2    | 141       | 132       | 130       | 128       | 131       |
 | 3    | 1668      | 1629      | 1611      | 1590      | 1591      |
-</div>
 
 - `shortestMinimumTreeStats.txt`: Armazena o peso total e o número de vértices da árvore mínima. O número de vértices é armazenado como forma de checar se o algoritmo funcionou corretamente.
 - `minimumSpanningTreeTime.csv`: Armazena o tempo, em milisegundos, levado para encontrar a árvore mínima.
 
-<div class="text-center">
 | Graph 1 | Graph 2 | Graph 3 |
 |---------|---------|---------|
 | 86      | 929     | 12182   |
-</div>
+
 
 - `eccentricityStats.txt`: Armazena a excentricidade, ou seja, o comprimento do caminho mais longo possível entre um vértice e todos os outros vértices do grafo.
 - `eccentricityTime.csv`: Armazena o tempo, em milisegundos, levado para encontrar a excentricidade para alguns vértices.
 
-<div class="text-center">
 | Graph| Vertex 10 | Vertex 20 | Vertex 30 | Vertex 40 | Vertex 50 |
 |------|-----------|-----------|-----------|-----------|-----------|
 | 1    | 8         | 6         | 7         | 6         | 7         |
 | 2    | 81        | 81        | 79        | 80        | 82        |
 | 3    | 1037      | 974       | 988       | 994       | 975       |
-</div>
+
 
