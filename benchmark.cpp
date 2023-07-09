@@ -10,7 +10,7 @@ int main() {
     
     std::ofstream shortestPathTimeFile("shortestPathTime.csv", std::ios::app);
     std::ofstream shortestPathStatsFile("shortestPathStats.txt");
-    shortestPathTimeFile << "Arquivo," << "10," << "20," << "30," << "40," << "50" << std::endl;
+    shortestPathTimeFile << "File," << "10," << "20," << "30," << "40," << "50" << std::endl;
     for (unsigned int pathIdx = 0; pathIdx < paths.size(); pathIdx++) {
         Graph graph = createGraphFromFile(paths[pathIdx]);
         std::cout << std::endl;
@@ -59,6 +59,32 @@ int main() {
 
     minimumSpanningTreeFile.close();
     shortestMinimumTreeStatsFile.close();
+
+    std::cout << "---------------------------------------------" << std::endl;
+
+    std::ofstream eccentricityTimeFile("eccentricityTime.csv", std::ios::app);
+    std::ofstream eccentricityStatsFile("eccentricityStats.txt");
+    eccentricityTimeFile << "File," << "10," << "20," << "30," << "40," << "50" << std::endl;
+    for (unsigned int pathIdx = 0; pathIdx < paths.size(); pathIdx++) {
+        Graph graph = createGraphFromFile(paths[pathIdx]);
+        std::cout << std::endl;
+        std::cout << "Finding Shortest Path on File: " << paths[pathIdx] << std::endl;
+        eccentricityStatsFile << std::endl;
+        eccentricityStatsFile << "File: " << paths[pathIdx] << std::endl;
+        for (unsigned int vertexIdx = 0; vertexIdx < vertices.size(); vertexIdx++) {
+            shortestPathStatsFile << std::endl;
+            shortestPathStatsFile << "Vertex:" << vertices[vertexIdx] << std::endl;
+            shortestPathStatsFile << "-----------------------------" << std::endl;
+            shortestPathStatsFile << std::endl;
+
+            durations[vertexIdx] = measureEccentricityTime(graph, vertices[vertexIdx], eccentricityStatsFile);
+        }
+        eccentricityTimeFile << pathIdx+1 << ","  << durations[0] << "," <<  durations[1] << "," << durations[2] << "," << durations[3] << "," << durations[4] << std::endl;  
+        std::cout << "Eccentricity Found." << std::endl;
+    }
+
+    eccentricityTimeFile.close();
+    eccentricityStatsFile.close();
 
     return 0;
 }

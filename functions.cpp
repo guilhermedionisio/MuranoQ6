@@ -61,3 +61,19 @@ long measureMinimumSpanningTreeTime(Graph graph, std::ofstream& shortestMinimumT
 
     return duration.count();
 }
+
+void printEccentricityStats(float stats, std::ofstream& eccentricityStatsFile) {
+    eccentricityStatsFile << "Eccentricity: " << stats << std::endl;
+    eccentricityStatsFile << std::endl;
+}
+
+long measureEccentricityTime(Graph graph, int startVertex, std::ofstream& eccentricityStatsFile) {
+    auto start = std::chrono::high_resolution_clock::now();
+    float stats = graph.getEccentricity(startVertex-1);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    printEccentricityStats(stats, eccentricityStatsFile);
+    
+    return duration.count();
+}
