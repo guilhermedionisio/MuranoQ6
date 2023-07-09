@@ -3,5 +3,9 @@
 #include "classes.h"
 
 Graph createGraphFromFile(std::string& filename);
-void printShortestPathStats(std::pair<float, std::vector<int>>& path);
-long measureShortestPathTime(Graph& graph, int startVertex, int endVertex);
+
+void printShortestPathStats(std::pair<float, std::vector<int>>& path, std::ofstream& shortestPathStatsFile);
+long measureShortestPathTime(Graph& graph, int startVertex, int endVertex, std::ofstream& shortestPathStatsFile);
+
+void printMinimumSpanningTreeStats(float minimumTreeWeight, std::vector<Edge>& minimumTree, std::ofstream& shortestMinimumTreeStatsFile);
+long measureMinimumSpanningTreeTime(Graph graph, std::ofstream& shortestMinimumTreeStatsFile);
